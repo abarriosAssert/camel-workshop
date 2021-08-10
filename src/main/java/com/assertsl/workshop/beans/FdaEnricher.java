@@ -19,9 +19,8 @@ public class FdaEnricher implements AggregationStrategy {
             drugStore.setProductNdc(drugDto.getProductNdc());
             drugStore.setExistences(drugDto.getExistences());
             drugStore.setPrice(drugDto.getPrice());
-
-            //TODO: set fields packageDescription labelerName genericName returned by the query to drugStore
-
+            drugStore.setLabelerName(newExchange.getIn().getHeader("labelerName",String.class));
+            drugStore.setGenericName(newExchange.getIn().getHeader("genericName",String.class));
             newExchange.getIn().setBody(drugStore);
         }
         return newExchange;

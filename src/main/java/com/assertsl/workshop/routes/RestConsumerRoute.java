@@ -39,7 +39,7 @@ public class RestConsumerRoute extends RouteBuilder {
                 .responseMessage().code(200).message("operation executed successfully").endResponseMessage()
                 .to("direct:updateDrug")
 
-                .delete("/{ncdCode}").consumes("application/json").outType(DrugStore.class).description("Disable drug")
+                .delete("/{ncdCode}").outType(DrugStore.class).description("Disable drug")
                 .param().name("ncdCode").type(RestParamType.path).description("The drug ncd code").dataType("string").endParam()
                 .responseMessage().code(200).message("operation executed successfully").endResponseMessage()
                 .to("direct:disableDrug")
